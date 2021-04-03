@@ -5,6 +5,7 @@ import Filter from '../Filter/Filter';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getContacts } from '../../../reducer/contacts/api';
+import { container } from './PhonebookPage.module.css';
 
 const Phonebook = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Phonebook = () => {
   }, []);
 
   return (
-    <div>
+    <div className={container}>
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>

@@ -1,4 +1,12 @@
-import { item } from './ContactList.module.css';
+import {
+  item,
+  list,
+  button,
+  spinner,
+  contacts_container,
+  contact_name,
+  contact_number,
+} from './ContactList.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   contactsSelector,
@@ -8,6 +16,7 @@ import {
 import { deleteContact } from '../../../reducer/contacts/api';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import CircularIndeterminate from '../Spinner/Spinner';
 
 export default function ContactList() {
   const dispatch = useDispatch();
@@ -24,21 +33,31 @@ export default function ContactList() {
   );
 
   return (
-    <>
+    <div className={contacts_container}>
       {isLoading ? (
-        <p>Loading...</p>
+        <div className={spinner}>
+          <CircularIndeterminate />
+        </div>
       ) : (
-        <ul>
+        <ul className={list}>
           {visibleContacts.map(({ id, name, number }) => (
             <li className={item} key={id}>
-              {name}:{number}
-              <IconButton aria-label="delete" onClick={() => deleteCont(id)}>
+              <div>
+                {' '}
+                <spam className={contact_name}>{name}</spam>:
+                <spam className={contact_number}>{number}</spam>{' '}
+              </div>
+              <IconButton
+                className={button}
+                aria-label="delete"
+                onClick={() => deleteCont(id)}
+              >
                 <DeleteIcon />
               </IconButton>
             </li>
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }
