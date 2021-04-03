@@ -7,13 +7,15 @@ const initialState = {
   isLoading: false,
 };
 
+const getContacts = (_, actions) => actions.payload;
+
 const addContact = (state, action) => [...state, action.payload];
 
 const deleteContact = (state, action) =>
   state.filter(contact => contact.id !== action.payload);
 
 const contacts = createReducer(initialState.contacts, {
-  [actions.successContactsAction]: (state, actions) => actions.payload,
+  [actions.successContactsAction]: getContacts,
   [actions.successAddContactsAction]: addContact,
   [actions.successDeleteContactsAction]: deleteContact,
 });

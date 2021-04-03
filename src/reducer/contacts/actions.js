@@ -1,7 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// export const addContactAction = createAction('contact/add');
-// export const deleteContactAction = createAction('contact/delete');
 export const filterContactAction = createAction('contact/filter');
 
 export const requestContactsAction = createAction('contacts/request');
